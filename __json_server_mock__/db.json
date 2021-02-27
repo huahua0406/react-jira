@@ -1,9 +1,27 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
+    "users": [{
+        "name": "test1",
+        "id": 1
+    },{
+        "name": "test2",
+        "id": 2
+    },{
+        "name": "test3",
+        "id": 3
+    }],
+    "projects": [{
+        "id": 1,
+        "name": "项目1",
+        "personid": 1
+    },
+    {
+        "id": 2,
+        "name": "项目2",
+        "personid": 2
+    },
+    {
+        "id": 3,
+        "name": "项目3",
+        "personid": 3
+    }]
 }
