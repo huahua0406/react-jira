@@ -1,6 +1,7 @@
-import { login } from '@/auth/auth-provider';
+import { useAuth } from '@/context/app-context';
 
 export const LoginForm = () => {
+    const { login } = useAuth();
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const username = (event.currentTarget.elements[0] as HTMLFormElement).value;

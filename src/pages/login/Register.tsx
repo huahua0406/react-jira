@@ -1,6 +1,7 @@
-import { register } from '@/auth/auth-provider';
+import { useAuth } from '@/context/app-context';
 
 export const RegisterForm = () => {
+    const { register } = useAuth();
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const username = (e.currentTarget.elements[0] as HTMLFormElement).value;
