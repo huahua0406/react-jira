@@ -1,3 +1,5 @@
+//如果使用firebase这种第三方auth服务，不需要开发者再开发此文件
+//这个组件主要做的是对得到的token进行存储和fetchcall方法
 import { User } from '@/pages/project/SearchForm';
 
 const key = '__auth_provider__token';
@@ -21,7 +23,7 @@ export const login = (data: { username: string; password: string }) => {
         if (res.ok) {
             return handleUserResponse(await res.json());
         } else {
-            return Promise.reject(await res.json());
+            return Promise.reject(data);
         }
     });
 };
@@ -37,9 +39,10 @@ export const register = (data: { username: string; password: string }) => {
         if (res.ok) {
             return handleUserResponse(await res.json());
         } else {
-            return Promise.reject(await res.json());
+            return Promise.reject(data);
         }
     });
 };
 
+// 加async使他返回promise
 export const logout = async () => window.localStorage.removeItem(key);
