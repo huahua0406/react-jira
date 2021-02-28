@@ -1,36 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import * as qs from 'qs';
 import { SearchForm } from './SearchForm';
 import { List } from './List';
 import { useMount, useDebounceValue } from '../../utils/customHook';
 import { clearObject } from '../../utils';
 import { useAuth } from '@/context/app-context';
-const baseUrl = process.env.REACT_APP_BASE_URL;
+import { useHttp } from '@/utils/http';
 
 export const ProjectList = () => {
     const [param, setParam] = useState({
         name: '',
-        personid: '',
+        personId: '',
     });
     const [users, setUsers] = useState([]);
     const [list, setList] = useState([]);
-    const { logout } = useAuth();
     const debounceParam = useDebounceValue(param);
 
+    const { logout } = useAuth();
+    const request = useHttp();
+
     useEffect(() => {
-        fetch(`${baseUrl}/projects?${qs.stringify(clearObject(debounceParam))}`).then(async (res) => {
-            if (res.ok) {
-                setList(await res.json());
-            }
-        });
+        request('/projects', {
+            data: clearObject(debounceParam),
+        }).then(setList);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debounceParam]);
 
     useMount(() => {
-        fetch(`${baseUrl}/users`).then(async (res) => {
-            if (res.ok) {
-                setUsers(await res.json());
-            }
-        });
+        // fetch(`${baseUrl}/users`).then(async (res) => {
+        //     if (res.ok) {
+        //         setUsers(await res.json());
+        //     }
+        // });
+        request('/users').then(setUsers);
     });
 
     return (

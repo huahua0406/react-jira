@@ -3,6 +3,9 @@ import React from 'react';
 export interface User {
     id: string;
     name: string;
+    email: string;
+    title: string;
+    organization: string;
     token: string;
 }
 
@@ -10,7 +13,7 @@ interface SearchFormProps {
     users: User[];
     param: {
         name: string;
-        personid: string;
+        personId: string;
     };
     setParam: (params: SearchFormProps['param']) => void;
 }
@@ -28,11 +31,11 @@ export const SearchForm = ({ users, param, setParam }: SearchFormProps) => {
                 }
             />
             <select
-                value={param.personid}
+                value={param.personId}
                 onChange={(e) =>
                     setParam({
                         ...param,
-                        personid: e.target.value,
+                        personId: e.target.value,
                     })
                 }
             >
