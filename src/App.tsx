@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.less';
 import { ProjectList } from '@/pages/project';
 import { LoginPage } from '@/pages/login';
 import { useAuth } from '@/context/app-context';

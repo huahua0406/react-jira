@@ -41,5 +41,6 @@ export const useHttp = () => {
     const { user } = useAuth();
     return (...[path, config]: Parameters<typeof http>) => http(path, { ...config, token: user?.token });
 };
+// Utility Types Partial和Omit
 
 // export default useHttp;

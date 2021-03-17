@@ -1,4 +1,5 @@
 import { useAuth } from '@/context/app-context';
+import { Button } from 'antd';
 
 export const LoginForm = () => {
     const { login } = useAuth();
@@ -18,7 +19,8 @@ export const LoginForm = () => {
                 <label htmlFor="password">Password</label>
                 <input type="text" id="password" />
             </div>
-            <button type="submit">submit</button>
+            {/* <button type="submit">submit</button> */}
+            <Button type="primary">Primary Button</Button>
         </form>
     );
 };
