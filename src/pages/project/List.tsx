@@ -31,5 +31,5 @@ export const List = ({ list, users }: ListProps) => {
             },
         },
     ];
-    return <Table columns={columns} dataSource={list} pagination={false} />;
+    return <Table rowKey={'id'} columns={columns} dataSource={list} pagination={false} />;
 };

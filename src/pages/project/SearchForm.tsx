@@ -23,6 +23,7 @@ export const SearchForm = ({ users, param, setParam }: SearchFormProps) => {
     return (
         <div>
             <Input
+                placeholder="项目名称"
                 onChange={(e) =>
                     setParam({
                         ...param,
@@ -31,6 +32,7 @@ export const SearchForm = ({ users, param, setParam }: SearchFormProps) => {
                 }
             />
             <Select
+                placeholder="负责人"
                 value={param.personId}
                 onChange={(value) =>
                     setParam({
