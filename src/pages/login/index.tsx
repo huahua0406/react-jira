@@ -7,7 +7,7 @@ export function LoginPage() {
     return (
         <div>
             {isRegister ? <RegisterForm /> : <LoginForm />}
-            <button onClick={() => setIsRegister(!isRegister)}>switch to {isRegister ? 'login' : 'register'}</button>
+            <button onClick={() => setIsRegister(!isRegister)}>switch to {isRegister ? '登录' : '注册'}</button>
         </div>
     );
 }

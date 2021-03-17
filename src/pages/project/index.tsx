@@ -26,11 +26,6 @@ export const ProjectList = () => {
     }, [debounceParam]);
 
     useMount(() => {
-        // fetch(`${baseUrl}/users`).then(async (res) => {
-        //     if (res.ok) {
-        //         setUsers(await res.json());
-        //     }
-        // });
         request('/users').then(setUsers);
     });
 

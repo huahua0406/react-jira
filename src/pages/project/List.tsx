@@ -1,6 +1,6 @@
 import React from 'react';
 import { User } from './SearchForm';
-
+import { Table } from 'antd';
 interface Project {
     id: string;
     name: string;
@@ -15,22 +15,21 @@ interface ListProps {
 }
 
 export const List = ({ list, users }: ListProps) => {
-    return (
-        <table>
-            <thead>
-                <tr>
-                    <td>项目名称</td>
-                    <td>负责人</td>
-                </tr>
-            </thead>
-            <tbody>
-                {list.map((item) => (
-                    <tr key={item.id}>
-                        <td>{item.name}</td>
-                        <td>{users.find((user) => user.id === item.personId)?.name || '未知'}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    );
+    const columns = [
+        {
+            title: '项目名称',
+            dataIndex: 'name',
+            key: 'name',
+            sorter: (a: any, b: any) => a.name.localeCompare(b.name),
+        },
+        {
+            title: '负责人',
+            dataIndex: 'person',
+            key: 'person',
+            render: (text: any, record: Project) => {
+                return <span>{users.find((user) => user.id === record.personId)?.name || '未知'}</span>;
+            },
+        },
+    ];
+    return <Table columns={columns} dataSource={list} pagination={false} />;
 };

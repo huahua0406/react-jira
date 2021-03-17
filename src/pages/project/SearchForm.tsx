@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { Input, Select } from 'antd';
+const { Option } = Select;
 export interface User {
     id: string;
     name: string;
@@ -21,8 +22,7 @@ interface SearchFormProps {
 export const SearchForm = ({ users, param, setParam }: SearchFormProps) => {
     return (
         <div>
-            <input
-                type="text"
+            <Input
                 onChange={(e) =>
                     setParam({
                         ...param,
@@ -30,22 +30,22 @@ export const SearchForm = ({ users, param, setParam }: SearchFormProps) => {
                     })
                 }
             />
-            <select
+            <Select
                 value={param.personId}
-                onChange={(e) =>
+                onChange={(value) =>
                     setParam({
                         ...param,
-                        personId: e.target.value,
+                        personId: value,
                     })
                 }
             >
-                <option value="">全部</option>
+                <Option value={''}>全部</Option>
                 {users.map((user) => (
-                    <option key={user.id} value={user.id}>
+                    <Option key={user.id} value={user.id}>
                         {user.name}
-                    </option>
+                    </Option>
                 ))}
-            </select>
+            </Select>
         </div>
     );
 };

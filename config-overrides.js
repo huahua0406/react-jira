@@ -15,7 +15,7 @@ module.exports = override(
     }),
     addLessLoader({
         javascriptEnabled: true,
-        modifyVars: { '@primary-color': '#1DA57A' },
+        modifyVars: { '@primary-color': '#0052cc', '@font-size-base': '16px' },
         localIdentName: '[local]--[hash:base64:5]', // 自定义 CSS Modules 的 localIdentName
     })
 );
